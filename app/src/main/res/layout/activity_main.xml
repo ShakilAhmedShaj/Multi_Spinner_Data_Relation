@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="SPINNER DEMO" />
+        android:text="MULTI SPINNER DEMO"
+        android:layout_marginTop="10dp"/>
 
     <Spinner
         android:id="@+id/classSpinner"

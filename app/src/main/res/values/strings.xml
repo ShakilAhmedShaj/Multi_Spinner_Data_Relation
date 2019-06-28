@@ -1,18 +1,20 @@
 <resources>
-    <string name="app_name">mSpinner</string>
+    <string name="app_name">Multi Spinner Demo</string>
 
     <string-array name="items_class">
-        <item>Select City</item>
+        <item>Select Division</item>
         <item>Khulna</item>
         <item>Dhaka</item>
     </string-array>
 
     <string-array name="items_div_khulna">
-        <item>Royal More</item>
-        <item>Tootpara</item>
+        <item>Khulna Sadar</item>
         <item>Sonadanga</item>
-        <item>Rupsha</item>
-        <item>Shibbari</item>
+        <item>Rupsa</item>
+        <item>Koylaghat</item>
+        <item>Tootpara</item>
+        <item>Gollamari</item>
+        <item>Nirala</item>
     </string-array>
 
     <string-array name="items_div_dhaka">

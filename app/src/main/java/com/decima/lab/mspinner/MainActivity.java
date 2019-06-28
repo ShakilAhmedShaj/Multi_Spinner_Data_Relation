@@ -11,44 +11,46 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     // these are the global variables
-    Spinner classSpinner, divSpinner;
+    Spinner divSpinner, citySpinner;
     // string variable to store selected values
-    String selectedClass, selectedDiv;
+    String selectedDivision, selectedCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        classSpinner = (Spinner) findViewById(R.id.classSpinner);
-        divSpinner = (Spinner) findViewById(R.id.divSpinner);
+        divSpinner = (Spinner) findViewById(R.id.classSpinner);
+        citySpinner = (Spinner) findViewById(R.id.divSpinner);
 
         // Class Spinner implementing onItemSelectedListener
-        classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        divSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedClass = parent.getItemAtPosition(position).toString();
-                switch (selectedClass) {
+                selectedDivision = parent.getItemAtPosition(position).toString();
 
-                    case "Khulna":
-                        // assigning div item list defined in XML to the div Spinner
-                        divSpinner.setAdapter(new ArrayAdapter<String>(MainActivity.this,
-                                android.R.layout.simple_spinner_dropdown_item,
-                                getResources().getStringArray(R.array.items_div_khulna)));
-                        break;
 
-                    case "Dhaka":
-                        divSpinner.setAdapter(new ArrayAdapter<String>(MainActivity.this,
-                                android.R.layout.simple_spinner_dropdown_item,
-                                getResources().getStringArray(R.array.items_div_dhaka)));
-                        break;
+                if (selectedDivision.equalsIgnoreCase("Select Division")) {
+
+
+                } else if (selectedDivision.equalsIgnoreCase("Khulna")) {
+                    citySpinner.setVisibility(View.VISIBLE);
+                    citySpinner.setAdapter(new ArrayAdapter<String>(MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item,
+                            getResources().getStringArray(R.array.items_div_khulna)));
 
                 }
+            else if (selectedDivision.equalsIgnoreCase("Dhaka")) {
+                citySpinner.setVisibility(View.GONE);
 
-//                Toast.makeText(MainActivity.this, "Class "+selectedClass, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Delivery to Dhaka is currently not Available", Toast.LENGTH_SHORT).show();
+            }
 
-                //set divSpinner Visibility to Visible
-                divSpinner.setVisibility(View.VISIBLE);
+
+//                Toast.makeText(MainActivity.this, "Class "+selectedDivision, Toast.LENGTH_SHORT).show();
+
+                //set citySpinner Visibility to Visible
+//                citySpinner.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -58,16 +60,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Div Spinner implementing onItemSelectedListener
-        divSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedDiv = parent.getItemAtPosition(position).toString();
+                selectedCity = parent.getItemAtPosition(position).toString();
                 /*
                     Now that we have both values, lets create a Toast to
                     show the values on screen
                 */
-                Toast.makeText(MainActivity.this, "\n Class: \t " + selectedClass +
-                        "\n Div: \t" + selectedDiv, Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Division: \t " + selectedDivision +
+                        "\nCity: \t" + selectedCity, Toast.LENGTH_LONG).show();
             }
 
             @Override
